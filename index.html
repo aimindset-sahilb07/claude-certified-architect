@@ -286,42 +286,14 @@ a:hover { color: var(--accent-hover); text-decoration: underline; }
 #d1 .container, #d5 .container {
   max-width: 860px;
   margin: 0 auto;
-  padding: 48px 36px 80px;
+  padding: 0 48px 80px;
 }
-/* Hero */
+/* Hero — no background, plain page, D4-standard padding */
 #d1 .hero, #d5 .hero {
-  margin-bottom: 40px;
-  padding-bottom: 32px;
-  border-bottom: 1px solid var(--border);
+  padding: 48px 0 36px;
+  margin-bottom: 0;
 }
-#d1 .hero-label, #d5 .hero-label {
-  font-family: var(--font-mono);
-  font-size: 11px;
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
-  color: var(--accent);
-  margin-bottom: 10px;
-  display: block;
-}
-#d1 .hero h1, #d5 .hero h1 {
-  font-family: var(--font-head);
-  font-size: clamp(2rem, 4vw, 2.8rem);
-  font-weight: 400;
-  line-height: 1.15;
-  color: var(--text);
-  margin-bottom: 10px;
-}
-#d1 .hero h1 em, #d5 .hero h1 em {
-  color: var(--accent);
-  font-style: normal;
-}
-#d1 .hero-sub, #d5 .hero-sub {
-  font-size: 1.05rem;
-  color: var(--text-muted);
-  max-width: 580px;
-  line-height: 1.6;
-}
-/* Sticky inner nav */
+/* Sticky inner nav — D4 underline tab style */
 #d1 .nav-section, #d5 .nav-section {
   position: sticky;
   top: var(--tbh);
@@ -329,32 +301,38 @@ a:hover { color: var(--accent-hover); text-decoration: underline; }
   backdrop-filter: blur(6px);
   border-bottom: 1px solid var(--border);
   z-index: 20;
-  margin: 0 -36px 40px;
-  padding: 0 36px;
+  margin: 0 -48px 40px;
+  padding: 0 48px;
 }
 #d1 .nav-pills, #d5 .nav-pills {
   display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-  padding: 10px 0;
+  overflow-x: auto;
+  gap: 0;
+  padding: 0;
 }
+#d1 .nav-pills::-webkit-scrollbar, #d5 .nav-pills::-webkit-scrollbar { height: 0; }
 #d1 .nav-pills a, #d5 .nav-pills a {
-  font-family: var(--font-mono);
-  font-size: 11.5px;
+  font-family: var(--font-body);
+  font-size: 13.5px;
+  font-weight: 500;
   color: var(--text-muted);
-  background: var(--surface);
-  border: 1px solid var(--border);
-  padding: 4px 10px;
-  border-radius: 20px;
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  padding: 13px 18px;
   transition: all 0.15s;
   text-decoration: none;
   white-space: nowrap;
+  display: inline-block;
 }
 #d1 .nav-pills a:hover, #d5 .nav-pills a:hover {
-  color: var(--accent);
-  border-color: var(--accent);
-  background: var(--accent-dim);
+  color: var(--text);
   text-decoration: none;
+  border-bottom-color: var(--border-dark);
+}
+#d1 .nav-pills a:first-child, #d5 .nav-pills a:first-child {
+  color: var(--accent);
+  border-bottom-color: var(--accent);
 }
 /* Chunks */
 #d1 .chunk, #d5 .chunk {
@@ -539,9 +517,7 @@ a:hover { color: var(--accent-hover); text-decoration: underline; }
 #d2 { font-family: var(--font-body); }
 
 #d2 .hero {
-  background: var(--surface);
-  border-bottom: 1px solid var(--border);
-  padding: 52px 48px 36px;
+  padding: 48px 48px 36px;
 }
 #d2 .hero-badge {
   display: inline-block;
@@ -566,50 +542,57 @@ a:hover { color: var(--accent-hover); text-decoration: underline; }
 }
 #d2 .hero p { font-size: 1rem; color: var(--text-muted); max-width: 580px; line-height: 1.6; }
 
+/* D2 TOC — underline tab style matching D4 */
 #d2 .toc {
-  background: var(--bg);
+  background: rgba(250,249,247,0.97);
+  backdrop-filter: blur(6px);
   border-bottom: 1px solid var(--border);
-  padding: 20px 48px;
+  padding: 0 48px;
+  position: sticky;
+  top: var(--tbh);
+  z-index: 30;
 }
-#d2 .toc-label {
-  font-family: var(--font-mono);
-  font-size: 10px;
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
-  color: var(--text-muted);
-  margin-bottom: 10px;
-}
+#d2 .toc-label { display: none; }
 #d2 .toc-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 4px;
-}
-#d2 .toc-item {
   display: flex;
+  overflow-x: auto;
+  gap: 0;
+}
+#d2 .toc-grid::-webkit-scrollbar { height: 0; }
+#d2 .toc-item {
+  display: inline-flex;
   align-items: center;
-  gap: 10px;
-  padding: 7px 10px;
-  border-radius: var(--radius-sm);
+  gap: 7px;
+  padding: 13px 16px;
   color: var(--text-muted);
-  font-size: 13px;
+  font-family: var(--font-body);
+  font-size: 13.5px;
+  font-weight: 500;
+  border-bottom: 2px solid transparent;
   transition: all 0.15s;
-  border: 1px solid transparent;
   text-decoration: none;
+  white-space: nowrap;
+  border-radius: 0;
+  background: none;
 }
 #d2 .toc-item:hover {
-  background: var(--surface);
   color: var(--text);
-  border-color: var(--border);
+  border-bottom-color: var(--border-dark);
+  background: none;
   text-decoration: none;
+}
+#d2 .toc-item:first-child {
+  color: var(--accent);
+  border-bottom-color: var(--accent);
 }
 #d2 .toc-num {
   font-family: var(--font-mono);
   font-size: 10px;
-  color: var(--accent);
-  background: var(--accent-dim);
-  padding: 2px 6px;
-  border-radius: 4px;
-  flex-shrink: 0;
+  color: inherit;
+  background: none;
+  padding: 0;
+  border-radius: 0;
+  opacity: 0.6;
 }
 #d2 .container { max-width: 860px; margin: 0 auto; padding: 40px 48px 80px; }
 #d2 .section { margin-bottom: 60px; scroll-margin-top: calc(var(--tbh) + 12px); }
@@ -733,90 +716,77 @@ a:hover { color: var(--accent-hover); text-decoration: underline; }
    D3 — CODE SHOWCASE (JS-rendered content)
    All class names must match what d3_script.js injects
    ═══════════════════════════════════════════════════ */
-#d3 { font-family: var(--font-alt); }
+#d3 { font-family: var(--font-body); }
 
-/* Header (built in build2.py as .d3-header) */
+/* Header — no background, left-aligned, D4-standard */
 #d3 .d3-header {
-  background: var(--surface);
-  border-bottom: 1px solid var(--border);
-  padding: 48px 40px 36px;
-  text-align: center;
-  position: relative;
-  overflow: hidden;
-}
-#d3 .d3-header::before {
-  content: '';
-  position: absolute;
-  top: -60px; left: 50%; transform: translateX(-50%);
-  width: 400px; height: 400px;
-  background: radial-gradient(circle, rgba(217,117,89,0.06) 0%, transparent 70%);
-  pointer-events: none;
+  padding: 48px 48px 36px;
 }
 #d3 .header-badge {
   display: inline-block;
   font-family: var(--font-mono);
   font-size: 11px;
   text-transform: uppercase;
-  letter-spacing: 0.14em;
+  letter-spacing: 0.12em;
   color: var(--accent);
   background: var(--accent-dim);
   border: 1px solid rgba(217,117,89,0.25);
-  padding: 4px 14px;
+  padding: 4px 12px;
   border-radius: 20px;
-  margin-bottom: 12px;
+  margin-bottom: 14px;
 }
 #d3 .d3-header h1 {
   font-family: var(--font-head);
-  font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+  font-size: clamp(2rem, 4vw, 2.8rem);
   font-weight: 400;
   color: var(--text);
-  margin-bottom: 8px;
-  line-height: 1.2;
+  margin-bottom: 12px;
+  line-height: 1.15;
 }
-#d3 .d3-header h1 span { color: var(--accent); }
-#d3 .d3-header p { font-size: 0.95rem; color: var(--text-muted); max-width: 480px; margin: 0 auto; }
+#d3 .d3-header p {
+  font-size: 1rem;
+  color: var(--text-muted);
+  max-width: 580px;
+  line-height: 1.6;
+}
 
-/* Section nav bar — wraps .section-btn elements */
+/* Section nav — D4 underline tab style */
 #d3 #d3SectionNav {
   display: flex;
-  gap: 6px;
-  padding: 12px 28px;
+  gap: 0;
+  padding: 0 48px;
   border-bottom: 1px solid var(--border);
   overflow-x: auto;
-  background: var(--bg);
+  background: rgba(250,249,247,0.97);
+  backdrop-filter: blur(6px);
   position: sticky;
   top: var(--tbh);
   z-index: 30;
 }
-#d3 #d3SectionNav::-webkit-scrollbar { height: 3px; }
-#d3 #d3SectionNav::-webkit-scrollbar-thumb { background: var(--border); }
+#d3 #d3SectionNav::-webkit-scrollbar { height: 0; }
 #d3 .section-btn {
-  font-family: var(--font-mono);
-  font-size: 11.5px;
+  font-family: var(--font-body);
+  font-size: 13.5px;
   font-weight: 500;
-  padding: 7px 14px;
-  border-radius: var(--radius);
-  border: 1px solid var(--border);
-  background: var(--surface);
+  padding: 13px 18px;
+  border: none;
+  border-bottom: 2px solid transparent;
+  background: none;
   color: var(--text-muted);
   cursor: pointer;
   white-space: nowrap;
-  transition: all 0.18s;
+  transition: all 0.15s;
   user-select: none;
+  border-radius: 0;
 }
-#d3 .section-btn:hover { border-color: var(--accent); color: var(--text); background: var(--bg); }
-#d3 .section-btn.active {
-  background: var(--accent-dim);
-  border-color: var(--accent);
-  color: #7a3020;
-  font-weight: 600;
-}
+#d3 .section-btn:hover { color: var(--text); border-bottom-color: var(--border-dark); }
+#d3 .section-btn.active { color: var(--accent); border-bottom-color: var(--accent); }
 
-/* Main content area — wraps .panel elements */
+/* Main content area */
 #d3 #d3MainContent {
-  max-width: 980px;
+  max-width: 860px;
   margin: 0 auto;
-  padding: 28px 32px 80px;
+  padding: 32px 48px 80px;
 }
 
 /* Panels */
@@ -1080,12 +1050,10 @@ a:hover { color: var(--accent-hover); text-decoration: underline; }
 /* ═══════════════════════════════════════════════════
    D4 — PROMPT ENGINEERING & STRUCTURED OUTPUT
    ═══════════════════════════════════════════════════ */
-#d4 { font-family: var(--font-alt); }
+#d4 { font-family: var(--font-body); }
 
 #d4 .hero {
-  background: var(--surface);
   padding: 48px 48px 36px;
-  border-bottom: 1px solid var(--border);
 }
 #d4 .hero-badge {
   display: inline-block;
@@ -1368,7 +1336,7 @@ a:hover { color: var(--accent-hover); text-decoration: underline; }
   </div>
 
   <div class="sidebar-footer">
-    Claude Agent SDK &middot; <a href="https://github.com/aimindset-sahilb07" target="_blank">aimindset-sahilb07</a>
+    <a href="https://youfoundsahil.ai" target="_blank">youfoundsahil.ai</a>
   </div>
 </nav>
 
@@ -1376,7 +1344,7 @@ a:hover { color: var(--accent-hover); text-decoration: underline; }
 <header class="topbar">
   <button class="menu-btn" onclick="toggleSidebar()">&#9776;</button>
   <span class="topbar-title" id="topbarTitle">Domain 1 &mdash; Agentic Architecture &amp; Orchestration</span>
-  <div class="topbar-badge">Claude Agent SDK &middot; Certification Prep</div>
+  <div class="topbar-badge">Claude Certified Architect &mdash; Foundation</div>
 </header>
 <div class="panels">
 <div id="d1" class="domain-panel active"><div class="container">
@@ -1384,9 +1352,9 @@ a:hover { color: var(--accent-hover); text-decoration: underline; }
 
   <!-- HERO -->
   <div class="hero">
-    <div class="hero-label">Claude Agent SDK Certification — Study Guide</div>
-    <h1>Agentic Architecture<br>& <em>Orchestration</em></h1>
-    <p class="hero-sub">Domain 1 — seven core concepts from agentic loops to session forking, distilled for exam readiness.</p>
+    <div class="hero-badge">Claude Certified Architect — Foundation</div>
+    <h1>Agentic Architecture<br>&amp; Orchestration</h1>
+    <p>Domain 1 — seven core concepts from agentic loops to session forking, distilled for exam readiness.</p>
   </div>
 
   <!-- NAV -->
@@ -1870,7 +1838,7 @@ claude --resume <span class="str">"auth-refactor"</span> <span class="str">"Now 
 
   <!-- FOOTER -->
   <footer>
-    Domain 1 of 5 · Claude Agent SDK Certification · Study Guide
+    Domain 1 of 5 · Claude Certified Architect — Foundation
   </footer>
 
 </div>
@@ -1878,9 +1846,9 @@ claude --resume <span class="str">"auth-refactor"</span> <span class="str">"Now 
 <div id="d2" class="domain-panel">
 <!-- ═══════════════ HERO ═══════════════ -->
 <div class="hero">
-  <div class="hero-badge">Certification Study Guide</div>
-  <h1>Tool Design &<br>MCP Integration</h1>
-  <p>Domain 2 of the Claude Agent SDK Certification — covering tool descriptions, error handling, tool distribution, tool_choice, MCP servers, and built-in tools.</p>
+  <div class="hero-badge">Claude Certified Architect — Foundation</div>
+  <h1>Tool Design &amp;<br>MCP Integration</h1>
+  <p>Domain 2 — covering tool descriptions, error handling, tool distribution, tool_choice, MCP servers, and built-in tools.</p>
 </div>
 
 <!-- ═══════════════ TOC ═══════════════ -->
@@ -2475,13 +2443,13 @@ Write(<span class="str">"handlers.py"</span>, updated)</pre>
 
 <!-- ═══════════════ FOOTER ═══════════════ -->
 <div class="footer">
-  Domain 2: Tool Design & MCP Integration · Claude Agent SDK Certification Study Guide
+  Domain 2: Tool Design & MCP Integration · Claude Certified Architect — Foundation
 </div>
 </div>
 <div id="d3" class="domain-panel">
   <div class="d3-header">
-    <div class="header-badge">Claude Code Configs &amp; Workflows</div>
-    <h1>Domain 3 &mdash; <span>In Practice</span></h1>
+    <div class="header-badge">Claude Certified Architect &mdash; Foundation</div>
+    <h1>Claude Code Configs &amp; Workflows</h1>
     <p>Real file structures and annotated code examples for every concept</p>
   </div>
   <div id="d3SectionNav" class="section-nav"></div>
@@ -2490,8 +2458,8 @@ Write(<span class="str">"handlers.py"</span>, updated)</pre>
 <div id="d4" class="domain-panel">
 <!-- HERO -->
 <div class="hero">
-  <div class="hero-badge">Claude Agent SDK · Certification Prep</div>
-  <h1>Domain 4: Prompt Engineering<br>& <span>Structured Output</span></h1>
+  <div class="hero-badge">Claude Certified Architect — Foundation</div>
+  <h1>Prompt Engineering<br>&amp; Structured Output</h1>
   <p>Tasks 4.1 & 4.2 — Explicit criteria, false positive management, and few-shot prompting for consistent, reliable output.</p>
 </div>
 
@@ -2744,9 +2712,9 @@ Not a style issue worth flagging.
 
   <!-- HERO -->
   <div class="hero">
-    <div class="hero-label">Claude Agent SDK Certification — Study Guide</div>
-    <h1>Context Management<br>& <em>Reliability</em></h1>
-    <p class="hero-sub">Domain 5 — six task statements covering context degradation, escalation logic, error propagation, codebase exploration, human review, and information provenance.</p>
+    <div class="hero-badge">Claude Certified Architect — Foundation</div>
+    <h1>Context Management<br>&amp; Reliability</h1>
+    <p>Domain 5 — six task statements covering context degradation, escalation logic, error propagation, codebase exploration, human review, and information provenance.</p>
   </div>
 
   <!-- NAV -->
@@ -3191,7 +3159,7 @@ Not a style issue worth flagging.
 </div>
 
 <footer>
-  Domain 5 — Context Management & Reliability · Claude Agent SDK Certification
+  Domain 5 — Context Management & Reliability · Claude Certified Architect — Foundation
 </footer>
 </div></div>
 </div></div>
